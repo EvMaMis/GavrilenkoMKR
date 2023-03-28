@@ -32,8 +32,12 @@ def compareMassives(first, second):
         writeToFile("diff", secondLine)
 
 def closeFile(name):
-    with open(f"{name}.txt", 'r+') as f:
-        f.seek(0, 0)
+    with open(f"{name}.txt", 'w+') as f:
+        f.seek(0)
+        f.write("")
+
+closeFile("diff")
+closeFile("same")
 
 firstFile = openFile("firstFile")
 secondFile = openFile("secondFile")
@@ -45,6 +49,3 @@ printLines(firstMassive, "First Massive")
 printLines(secondMassive, "Second Massive")
 
 compareMassives(firstMassive, secondMassive)
-
-closeFile("diff")
-closeFile("same")
