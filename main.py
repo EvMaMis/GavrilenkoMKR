@@ -2,9 +2,11 @@ def openFile(name):
     file = open(f"{name}.txt", 'r')
     return file
 
-def printLines(file):
+def printLines(file, numberOfFile):
+    print(f"======={numberOfFile}=======")
     for line in file:
         print(line, end="")
+    print("\n========================")
 
 def getLinesMassive(file):
     linesMassive = []
@@ -14,6 +16,7 @@ def getLinesMassive(file):
 
 firstFile = openFile("firstFile")
 secondFile = openFile("secondFile")
+printLines(firstFile, "First File")
+printLines(secondFile, "Second File")
 firstMassive = getLinesMassive(firstFile)
-print(firstMassive[2])
 
