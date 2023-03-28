@@ -1,5 +1,8 @@
 def openFile(name):
-    file = open(f"{name}.txt", 'r')
+    try:
+        file = open(f"{name}.txt", 'r')
+    except Exception:
+        raise(Exception)
     return file
 
 def printLines(file, numberOfFile):
