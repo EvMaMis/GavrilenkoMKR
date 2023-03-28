@@ -5,7 +5,7 @@ def openFile(name):
 def printLines(file, numberOfFile):
     print(f"======={numberOfFile}=======")
     for line in file:
-        print(line, end="")
+        print(line)
     print("\n========================")
 
 def getLinesMassive(file):
@@ -23,19 +23,28 @@ def compareMassives(first, second):
     for line in first:
         for secondLine in second:
             if line == secondLine:
-                print(line)
                 first.remove(line)
                 second.remove(secondLine)
                 writeToFile("same", line)
-        
+    for line in first:
+        writeToFile("diff", line)
+    for secondLine in second:
+        writeToFile("diff", secondLine)
+
+def closeFile(name):
+    with open(f"{name}.txt", 'r+') as f:
+        f.seek(0, 0)
 
 firstFile = openFile("firstFile")
 secondFile = openFile("secondFile")
 
-
 firstMassive = getLinesMassive(firstFile)
 secondMassive = getLinesMassive(secondFile)
 
-print(firstMassive)
+printLines(firstMassive, "First Massive")
+printLines(secondMassive, "Second Massive")
 
 compareMassives(firstMassive, secondMassive)
+
+closeFile("diff")
+closeFile("same")
